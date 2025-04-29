@@ -1,5 +1,6 @@
 # Loan-Repayment-Monitoring-SQL-Pipeline
 Incentive Eligibility and Status Modeling for Partner Collections
+
 ## Overview
 This project implements a SQL-based data pipeline to monitor loan repayment behaviors, identify defaulters, and categorize payment statuses based on timing delays.
 
@@ -49,6 +50,7 @@ Financial organizations often struggle with distinguishing between minor payment
 01_base_tables.sql
 sql
 CopyEdit
+
 -- Base Table
 CREATE TABLE upya_lcp_incentive_table1 AS
 SELECT * FROM source_table_name;
@@ -57,6 +59,7 @@ ________________________________________
 02_join_defaulters.sql
 sql
 CopyEdit
+
 -- Join defaulters to capture first-5-days payments
 CREATE TABLE upya_lcp_incentive_table2 AS (
 SELECT a.*, 
@@ -77,6 +80,7 @@ ________________________________________
 03_repayment_log_dump.sql
 sql
 CopyEdit
+
 -- Create repayment log table including grace period logic
 CREATE TABLE upya_l1_repayment_log AS
 SELECT *,
@@ -94,6 +98,7 @@ ________________________________________
 04_status_categorization.sql
 sql
 CopyEdit
+
 -- Repayment Status Categorization
 ALTER TABLE upya_l1_repayment_log
 ADD COLUMN final_collection_status VARCHAR(255);
@@ -116,6 +121,7 @@ ________________________________________
 05_final_spool.sql
 sql
 CopyEdit
+
 -- Final Aging Spool
 CREATE TABLE upya_ag_ageing AS
 SELECT a.*, 
@@ -138,12 +144,14 @@ ________________________________________
 
 WITH 
 -- Step 1: Base Table (upya_lcp_incentive_table1)
+
 base_table AS (
   SELECT *
   FROM `upya_lcp_incentive_table1`
 ),
 
 -- Step 2: Defaulters Payment Capture
+
 defaulters_check AS (
   SELECT 
     `contract_number`, 
@@ -153,6 +161,7 @@ defaulters_check AS (
 ),
 
 -- Step 3: Joining Base Table with Defaulters Check (upya_lcp_incentive_table2)
+
 joined_table AS (
   SELECT 
     a.*,
@@ -168,6 +177,7 @@ joined_table AS (
 ),
 
 -- Step 4: Calculating Final Collection Intervals and Statuses (upya_l1_repayment_log)
+
 repayment_log AS (
   SELECT 
     *,
@@ -220,6 +230,7 @@ repayment_status AS (
 ),
 
 -- Step 5: Final Table for Modelling and Excel Spool (upya_ag_ageing)
+
 final_spool AS (
   SELECT 
     a.*,
@@ -238,6 +249,7 @@ final_spool AS (
 )
 
 -- Final Select
+
 SELECT *
 FROM final_spool;
 
