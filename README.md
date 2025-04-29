@@ -49,13 +49,14 @@ Financial organizations often struggle with distinguishing between minor payment
 (cleaned, modular, easy to read)
 
 - [Loan-Repayment-Monitoring-SQL-Pipeline](https://github.com/olawale-effect/Loan-Repayment-Monitoring-SQL-Pipeline/blob/main/Repayment_Incentive_Process.sql)
-- [Loan-Repayment-Monitoring-SQL-Pipeline](https://github.com/olawale-effect/Loan-Repayment-Monitoring-SQL-Pipeline/blob/main/Repayment_Incentive_Process%20(CTE%20Refactored).sql)
+- [Loan-Repayment-Monitoring-SQL-Pipeline_CTE_Refactored](https://github.com/olawale-effect/Loan-Repayment-Monitoring-SQL-Pipeline/blob/main/Repayment_Incentive_Process%20(CTE%20Refactored).sql)
+
 
 
 📝 3. Notes Folder
 assumptions.md
 markdown
-CopyEdit
+
 # Assumptions
 - Payments captured in the first 5 days of a new month still belong to the previous month's dues.
 - Expected paid periods are aligned based on contract rules.
@@ -64,7 +65,7 @@ CopyEdit
 
 business_rules.md
 markdown
-CopyEdit
+
 # Business Rules
 
 - Payment delays of 1-5 days are considered 'Minor Delays'.
@@ -72,10 +73,10 @@ CopyEdit
 - Payments captured after expected periods but within 5 days get reprieved from full delinquency classification.
 - Only records validated against latest activity logs (`upya_activity_log`) are reported.
 
-________________________________________
+
 📸 4. (Optional) Diagrams Folder
-You can add a small diagram later showing:
-Data Ingestion -> Defaulter Join -> Delay Categorization -> Final Report
+
+## Data Ingestion -> Defaulter Join -> Delay Categorization -> Final Report
 
 ## Author
 Olawale | Business Intelligence | Data Engineering | Data Analytics
