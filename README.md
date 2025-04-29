@@ -76,7 +76,7 @@ markdown
 
 📸 4. (Optional) Diagrams Folder
 
-## Data Ingestion -> Defaulter Join -> Delay Categorization -> Final Report
+**Data Ingestion -> Defaulter Join -> Delay Categorization -> Final Report**
 
 ## Author
 Olawale | Business Intelligence | Data Engineering | Data Analytics
